@@ -1,52 +1,6 @@
 # RADAR-Kubernetes
 
-[![GitHub release](https://img.shields.io/github/v/release/radar-base/radar-kubernetes)](https://github.com/RADAR-base/RADAR-Kubernetes/releases/latest)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/radar-base/radar-kubernetes/push.yaml)
-[![Apache Licensed](https://img.shields.io/github/license/radar-base/radar-kubernetes)](LICENSE)
-![GitHub Discussions](https://img.shields.io/github/discussions/radar-base/radar-kubernetes) ![Maintenance](https://img.shields.io/maintenance/yes/2023)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/radar-base/radar-kubernetes/dev)
-[![Join our community Slack](https://img.shields.io/badge/slack-radarbase-success.svg?logo=slack)](https://docs.google.com/forms/d/e/1FAIpQLScKNZ-QonmxNkekDMLLbP-b_IrNHyDRuQValBy1BAsLOjEFpg/viewform)
-
-The Kubernetes stack of RADAR-base platform.
-
-## Table of contents
-
-<!-- Generated with VIM plugin https://github.com/mzlogin/vim-markdown-toc -->
-<!-- vim-markdown-toc GFM -->
-
-- [About](#about)
-- [Status](#status)
-  - [Compatibility](#compatibility)
-  - [Disclaimer](#disclaimer)
-- [Prerequisites](#prerequisites)
-  - [Hosting Infrastructure](#hosting-infrastructure)
-  - [Local machine](#local-machine)
-- [Installation](#installation)
-  - [Prepare](#prepare)
-  - [Configure](#configure)
-    - [Project Structure](#project-structure)
-  - [Install](#install)
-    - [Install RADAR-Kubernetes on your cluster.](#install-radar-kubernetes-on-your-cluster)
-    - [Monitor and verify the installation process.](#monitor-and-verify-the-installation-process)
-    - [Ensure Kafka cluster is functional and RADAR-base topics are loaded](#ensure-kafka-cluster-is-functional-and-radar-base-topics-are-loaded)
-    - [Troubleshoot](#troubleshoot)
-    - [Optional](#optional)
-- [Upgrade instructions](#upgrade-instructions)
-  - [Upgrade to RADAR-Kubernetes version 1.0.0](#upgrade-to-radar-kubernetes-version-100)
-- [Usage](#usage)
-  - [Accessing the applications](#accessing-the-applications)
-- [Volume expansion](#volume-expansion)
-- [Uninstall](#uninstall)
-- [Update charts](#update-charts)
-- [Feedback and Contributions](#feedback-and-contributions)
-
-<!-- vim-markdown-toc -->
-
-## About
-
-RADAR-base is an open-source platform designed to support remote clinical trials by collecting continuous data from wearables and mobile applications. RADAR-Kubernetes enables installing the RADAR-base platform onto Kubernetes clusters. RADAR-base platform can be used for wide range of use-cases. Depending on the use-case, the selection of applications need to be installed can vary. Please read the [component overview and breakdown](https://radar-base.atlassian.net/wiki/spaces/RAD/pages/2673967112/Component+overview+and+breakdown) to understand the role of each component and how components work together.
-
-RADAR-Kubernetes setup uses [Helm 3](https://github.com/helm/helm) charts to package necessary Kubernetes resources for each component and [helmfile](https://github.com/roboll/helmfile) to modularize and deploy Helm charts of the platform on a Kubernetes cluster. This setup is designed to be a lightweight way to install and configure the RADAR-base components. The original images or charts may provide more and granular configurations. Please visit the `README` of respective charts in [radar-helm-charts](https://github.com/RADAR-base/radar-helm-charts) to understand the configurations and visit the main repository for in depth knowledge.
+The Kubernetes stack of RADAR-base platform. The current repository is modified for testing purposes. It is currently being used for a TFM.
 
 ## Status
 
@@ -65,11 +19,6 @@ Currently RADAR-Kubernetes is tested and supported on following component versio
 | Helmfile | v0.152.0 |
 | YQ | v4.33.3 |
 
-It's possible to install RADAR-Kubernetes on different version of tools as well, but you might encounter compatibility issues. Make sure that `kubectl` version matches or it's higher than Kubernetes or K3s version that you're using. For other tools such as Git or Java the version, as long as it's not very old, it's not very impactful.
-
-### Disclaimer
-
-This documentation assumes familiarity with all referenced Kubernetes concepts, utilities, and procedures and familiarity with Helm charts and helmfile. While this documentation will provide guidance for installing and configuring RADAR-base platform on a Kubernetes cluster, it is not a replacement for the official detailed documentation or tutorial of Kubernetes, Helm or Helmfile. If you are not familiar with these tools, we strongly recommend you to get familiar with these tools. Here is a [list of useful links](https://radar-base.atlassian.net/wiki/spaces/RAD/pages/2731638785/How+to+get+started+with+tools+around+RADAR-Kubernetes) to get started.
 
 ## Prerequisites
 
