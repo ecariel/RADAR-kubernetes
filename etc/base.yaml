@@ -1,13 +1,13 @@
 # Whether to upgrade process rolls back changes made in case of failed upgrade
 atomicInstall: true
 # time to wait for any individual Kubernetes operation
-base_timeout: 90
+base_timeout: 1000
 # Context that you use in kubectl to access the Kubernetes cluster. Will be translated to `helm --kube-context <context_name>`
 kubeContext: default
 # Domain name that RADAR-Base installation will be acessible from
-server_name: example.com
+server_name: radarbase.gsi.upm.es
 # This email address will be used to notify for SSL certifcate expiration
-maintainer_email: MAINTAINER_EMAIL@example.com
+maintainer_email: arieligersoft@gmail.com
 # Number of Kafka pods that will be installed
 kafka_num_brokers: 3
 
@@ -39,7 +39,7 @@ fluent_bit:
   _extra_timeout: 0
 
 cert_manager:
-  _install: true
+  _install: false
   _chart_version: v1.10.0
   _extra_timeout: 0
   global:
@@ -108,7 +108,7 @@ kafka_manager:
 # --------------------------------------------------------- 10-base.yaml ---------------------------------------------------------
 # Use letsencrypt to retrieve SSL certificates.
 cert_manager_letsencrypt:
-  _install: true
+  _install: false
   _chart_version: 0.1.0
   _extra_timeout: 0
 
@@ -211,7 +211,7 @@ app_config_frontend:
 # --------------------------------------------------------- 20-appserver.yaml ---------------------------------------------------------
 # The charts in 20-appserver.yaml only need to be installed if you have a custom aRMT app.
 radar_appserver_postgresql:
-  _install: false
+  _install: true
   _chart_version: 11.1.24
   _extra_timeout: 0
   # Check https://hub.docker.com/r/bitnami/postgresql/tags
@@ -225,9 +225,9 @@ radar_appserver_postgresql:
       #existingClaim: "data-radar-appserver-postgresql-postgresql-0"
 
 radar_appserver:
-  _install: false
+  _install: true
   _chart_version: 0.1.4
-  _extra_timeout: 0
+  _extra_timeout: 300
   replicaCount: 1
   managementportal_resource_name: res_AppServer
   public_key_endpoints: []
